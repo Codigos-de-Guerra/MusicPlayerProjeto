@@ -14,7 +14,6 @@ export default function Controls({isPlaying, handlePlay, handlePrev, handleNext}
 
   return (
     <IconContext.Provider value={{size: "35px", color: "C4D0E3"}}>
-      <div>Controls</div>
       <div className="controls-container flex">
         <div className="action-btn flex" onClick={handlePrev}>
           <IoPlaySkipBack />
