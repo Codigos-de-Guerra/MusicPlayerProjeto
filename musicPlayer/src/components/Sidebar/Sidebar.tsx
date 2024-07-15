@@ -31,10 +31,10 @@ export default function Sidebar({}: SideBarProps) {
         src={profileImg}
       />
       <div className='sidebarButtons-container'>
-        <SidebarButton title="Favorites" to="/favorites" icon={<MdFavorite /> } isSignOut={false}/>
-        <SidebarButton title="Player" to="/player" icon={<FaPlay />} isSignOut={false}/>
-        <SidebarButton title="Library" to="/" icon={<IoLibrary />} isSignOut={false}/>
+        <SidebarButton title="Favorites" to="/favorites" icon={<MdFavorite /> } />
+        <SidebarButton title="Player" to="/player" icon={<FaPlay />} />
+        <SidebarButton title="Library" to="/" icon={<IoLibrary />} />
       </div>
-      <SidebarButton title="Sign out" to="" icon={<FaSignOutAlt />} isSignOut={true}/>
+      <SidebarButton title="Sign out" to="" icon={<FaSignOutAlt />} />
     </div>);
 }
