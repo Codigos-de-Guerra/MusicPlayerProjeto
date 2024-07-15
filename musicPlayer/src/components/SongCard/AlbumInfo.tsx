@@ -14,23 +14,17 @@ export default function AlbumInfo({album_type, artists, name, release_date, tota
     singers.push(element.name);
   });
 
-  //console.log("Singers =>", singers);
+  const AlbumInfoMessageSingle : string = `${album_type} feito por ${singers?.join(", ")}`;
 
-  let subComponentAlbumInfo = <p>{`${album_type} feito por ${singers?.join(", ")}
-  com ${total_tracks} faixas`}</p>;
-
-  if (album_type == "single") {
-    subComponentAlbumInfo = <p>{`${album_type} feito por ${singers?.join(", ")}`}</p>
-  }
   return (
     <div className="albumInfo-card">
       <div className="albumName-container">
-        <div className="auxiliar">
+        <div className="loop-effect">
           <p>{name + " - " + singers?.join(", ")}</p>
         </div>
       </div>
       <div className="album-info">
-        {subComponentAlbumInfo}
+        <p> { (album_type === "single") ? AlbumInfoMessageSingle : AlbumInfoMessageSingle + ` com ${total_tracks} faixas`} </p>
       </div>
       <div className="album-release">
         <p>Lançamento: {release_date}</p>

@@ -42,8 +42,9 @@ export default function AudioPlayer({allTracks, currentTrack, currentIndex, setC
 
   useEffect(() => {
     if (audioRef.current.src) {
+      console.log("///",audioRef.current.src)
       if (isPlaying) {
-        audioRef.current.load();
+        //audioRef.current.load();
         audioRef.current.play();
         startTimer();
       } else {
@@ -78,6 +79,9 @@ export default function AudioPlayer({allTracks, currentTrack, currentIndex, setC
       if(auxReadyRef.current) isReadyRef.current = true;
       else auxReadyRef.current = true;
     }
+
+    console.log("Track Obj:", currentTrack);
+    console.log("Source Url:", audioSrc);
   }, [currentIndex]);
 
   useEffect(() => {
@@ -88,15 +92,16 @@ export default function AudioPlayer({allTracks, currentTrack, currentIndex, setC
   }, []);
 
   const handlePrev = () => {
-    if (currentIndex - 1 < 0) setCurrentIndex(allTracks.length - 1);
+    if(allTracks.length == 0) setIsPlaying(false);
+    else if (currentIndex - 1 < 0) setCurrentIndex(allTracks.length - 1);
     else setCurrentIndex(currentIndex - 1);
   };
 
   
   const handleNext = () => {
-    if (currentIndex < allTracks.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else setCurrentIndex(0);
+    if(allTracks.length == 0) setIsPlaying(false);
+    else if (currentIndex < allTracks.length - 1) setCurrentIndex(currentIndex + 1);
+    else setCurrentIndex(0);
   };
 
   const formatTime = (n:number) => {
@@ -107,6 +112,11 @@ export default function AudioPlayer({allTracks, currentTrack, currentIndex, setC
   currentTrack?.album?.artists.forEach((artist: {name: string}) => {
     artists.push(artist.name);
   });
+
+  const updatePlayState = (isPlaying: boolean) => {
+    if(allTracks.length == 0) setIsPlaying(false);
+     else setIsPlaying(!isPlaying);
+  }
 
   return (
     <div className="player-body flex">
@@ -128,7 +138,7 @@ export default function AudioPlayer({allTracks, currentTrack, currentIndex, setC
           </div>
           <Controls
             isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
+            handlePlay={updatePlayState}
             handlePrev={handlePrev}
             handleNext={handleNext}
           />

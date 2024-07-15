@@ -15,14 +15,14 @@
   color: #c3d0e3;
 }
 
-.auxiliar {
+.loop-effect {
   white-space: nowrap;
   display: inline-block;
-  animation: auxiliar 12s linear infinite;
+  animation: linear-loop 12s linear infinite;
   padding-left: 100%;
 }
 
-@keyframes auxiliar {
+@keyframes linear-loop {
   0% {
     transform: translateX(0);
   }

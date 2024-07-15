@@ -1,16 +1,16 @@
+import "./Controls.css";
 
 import { IoPause, IoPlay, IoPlaySkipBack, IoPlaySkipForward } from "react-icons/io5";
-import "./Controls.css";
 import { IconContext } from "react-icons";
 
 type ControlsProps = {
   isPlaying: boolean,
-  setIsPlaying: (x:boolean) => void,
+  handlePlay: (x:boolean) => void,
   handlePrev: () => void,
   handleNext: () => void
 }
 
-export default function Controls({isPlaying, setIsPlaying, handlePrev, handleNext}: ControlsProps) {
+export default function Controls({isPlaying, handlePlay, handlePrev, handleNext}: ControlsProps) {
 
   return (
     <IconContext.Provider value={{size: "35px", color: "C4D0E3"}}>
@@ -19,7 +19,7 @@ export default function Controls({isPlaying, setIsPlaying, handlePrev, handleNex
         <div className="action-btn flex" onClick={handlePrev}>
           <IoPlaySkipBack />
         </div>
-        <div className="action-btn flex" onClick={() => setIsPlaying(!isPlaying)}>
+        <div className="action-btn flex" onClick={() => handlePlay(isPlaying)}>
           {isPlaying ? <IoPause/> : <IoPlay/>}
         </div>
         <div className="action-btn flex" onClick={handleNext}>
