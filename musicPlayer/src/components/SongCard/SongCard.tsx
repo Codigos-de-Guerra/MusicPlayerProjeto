@@ -1,6 +1,7 @@
+import './SongCard.css'
+
 import AlbumImage from './AlbumImage'
 import AlbumInfo from './AlbumInfo'
-import './SongCard.css'
 
 export type SongCardProps = {
   album : {
@@ -14,7 +15,6 @@ export type SongCardProps = {
 }
 
 export default function SongCard({album}: Partial<SongCardProps>) {
-  console.log("entrei Song")
   if (!album) return (<div className='songCard-body flex'/>)
   //console.log("Album =>", album);
   return (

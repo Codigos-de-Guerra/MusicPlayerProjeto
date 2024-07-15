@@ -17,7 +17,6 @@ export default function Player({}: PlayerProps) {
   const [currentIndex, setCurrentIndex] = useState(0); //necessary to work with controls workflow
 
   const location = useLocation();
-  console.log("Location", location)
 
   useEffect(() => {
     if(location.state) {
@@ -43,7 +42,6 @@ export default function Player({}: PlayerProps) {
     setCurrentTrack(tracks[currentIndex]?.track)
   }, [currentIndex]);
 
-  console.log("cur?", currentTrack);
   return (
     <div className='screen-container flex'>
       <div className='player-screen-left'>
